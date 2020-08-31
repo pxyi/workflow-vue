@@ -1,32 +1,69 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <workflow v-model="dataSource" />
   </div>
 </template>
+<script>
+import workflow from './components/workflow';
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+  components: { workflow },
+  created() {
+    window.getData = () => this.dataSource;
+  },
+  data() {
+    return {
+      boolean: true,
+      dataSource: {
+        "name":"发起人",
+        "type":"start",
+        "nodeId":-1,
+        "childNode":{
+            "type":"branch",
+            "prevId":-1,
+            "nodeId":1962370654,
+            "conditionNodes":[
+                {
+                    "name":"条件1",
+                    "type":"condition",
+                    "prevId":1962370654,
+                    "nodeId":8724388758
+                },
+                {
+                    "name":"条件2",
+                    "type":"condition",
+                    "prevId":1962370654,
+                    "nodeId":6955647539,
+                    "childNode":{
+                        "type":"branch",
+                        "prevId":6955647539,
+                        "nodeId":6579100235,
+                        "conditionNodes":[
+                            {
+                                "name":"条件1",
+                                "type":"condition",
+                                "prevId":6579100235,
+                                "nodeId":7943358411
+                            },
+                            {
+                                "name":"条件2",
+                                "type":"condition",
+                                "prevId":6579100235,
+                                "nodeId":9245914757
+                            }
+                        ],
+                        "childNode":{
+                            "type":"approver",
+                            "name":"审批人",
+                            "prevId":6579100235,
+                            "nodeId":2573062896
+                        }
+                    }
+                }
+            ]
+        }
+      }
+    }
+  }
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>>
