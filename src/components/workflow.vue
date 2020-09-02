@@ -23,6 +23,10 @@
       <div class="end-node-text">流程结束</div>
     </div>
 
+    <div class="submit">
+      <a-button @click="preview">预览</a-button>
+    </div>
+
   </div>
 </template>
 
@@ -46,6 +50,9 @@ export default {
     }
   },
   methods: {
+    preview() {
+      this.validator(this.value)
+    },
     addNode(option) {
       this.getNode(this.value, option.nodeId, (node) => {
         /* 新增分支 */
@@ -126,6 +133,18 @@ export default {
         }
       }
     },
+    validator(data) {
+      if (data.childNode) {
+        if (data.childNode.conditionNodes) {
+          for (let i in data.childNode.conditionNodes) {
+            console.log(data.childNode.conditionNodes[i].name)
+            this.validator(data.childNode.conditionNodes[i]);
+          }
+        }
+        // console.log(data.childNode, data.childNode.name)
+        this.validator(data.childNode)
+      }
+    }
   }
 }
 </script>

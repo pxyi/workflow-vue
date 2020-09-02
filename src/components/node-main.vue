@@ -100,6 +100,14 @@ export default {
         this.deleteNode(node.nodeId);
       } else {
         node.conditionNodes.splice(idx, 1);
+        /* 删除分支时将此分支下节点移动至其他分支  如开启此功能将以下注释打开 */
+        // if (node.conditionNodes[idx].childNode) {
+        //   const copy = node.conditionNodes[idx].childNode || null;
+        //   node.conditionNodes.splice(idx, 1);
+        //   if (!node.conditionNodes[0].childNode && copy) {
+        //     node.conditionNodes[0].childNode = copy;
+        //   }
+        // }
       }
     },
   }

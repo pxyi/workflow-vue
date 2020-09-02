@@ -1,6 +1,5 @@
 <template>
   <div class="col-box">
-    
     <div class="top-left-cover-line" v-if="index === 0"></div>
     <div class="bottom-left-cover-line" v-if="index === 0"></div>
     <div class="condition-node">
@@ -13,7 +12,7 @@
             <span class="priority-title">优先级{{ index + 1 }}</span>
             <span class="svg-icon close" @click="$emit('delbranch', index)">删除</span>
           </div>
-          <div class="content-wrapper">
+          <div class="content-wrapper" @click="handle">
             <div class="content">请设置条件</div>
           </div>
         </div>
@@ -59,6 +58,9 @@ export default {
     }
   },
   methods: {
+    handle() {
+      console.log(this.node)
+    }
   }
 }
 </script>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import App from './demo'
 
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
